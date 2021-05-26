@@ -1,13 +1,11 @@
 syntax = "proto3";
 
 option csharp_namespace = "CoffeeShop";
-import "google/protobuf/empty.proto";
 
 package coffee;
 
 service CoffeeShop {
     rpc OrderCoffee(OrderRequest) returns (CoffeeResponse);
-    rpc GetMenu(google.protobuf.Empty) returns (MenuResponse);
 }
 
 message OrderRequest {
@@ -17,15 +15,6 @@ message OrderRequest {
 message CoffeeResponse {
     Coffee coffee = 1;
     string receipt = 2;
-}
-
-message MenuResponse {
-    repeated MenuRecord menu_records = 1;
-}
-
-message MenuRecord {
-    Coffee coffee = 1;
-    int32 price = 2;
 }
 
 enum Coffee {
