@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeShop", "CoffeeShop\CoffeeShop.csproj", "{57332E46-BB04-48CD-B6DD-9DE67040E03C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoffeeShopClient", "CoffeeShopClient\CoffeeShopClient.csproj", "{9548D996-27C9-4901-A802-83AD6936A635}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{57332E46-BB04-48CD-B6DD-9DE67040E03C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57332E46-BB04-48CD-B6DD-9DE67040E03C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57332E46-BB04-48CD-B6DD-9DE67040E03C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9548D996-27C9-4901-A802-83AD6936A635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9548D996-27C9-4901-A802-83AD6936A635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9548D996-27C9-4901-A802-83AD6936A635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9548D996-27C9-4901-A802-83AD6936A635}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

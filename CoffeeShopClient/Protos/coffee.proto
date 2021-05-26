@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "CoffeeShop";
+option csharp_namespace = "CoffeeShopClient";
 import "google/protobuf/empty.proto";
 
 package coffee;

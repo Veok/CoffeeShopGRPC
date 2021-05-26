@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Google.Protobuf.Collections;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 
@@ -32,6 +35,21 @@ namespace CoffeeShop.Services
             const string message = "Invalid Coffee: {Coffee}";
             _logger.LogError(message, request.Coffee);
             throw new ArgumentOutOfRangeException(nameof(request.Coffee), request.Coffee, message);
+        }
+
+        public override Task<MenuResponse> GetMenu(Empty request, ServerCallContext context)
+        {
+            var menuRecords = CoffeeMenu()
+                .Select(x => new MenuRecord
+                {
+                    Coffee = x.Key,
+                    Price = x.Value
+                }).ToList();
+
+            return Task.FromResult(new MenuResponse
+            {
+                MenuRecords = {menuRecords}
+            });
         }
 
         private static Dictionary<Coffee, int> CoffeeMenu()
