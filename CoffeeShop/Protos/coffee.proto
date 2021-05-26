@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option csharp_namespace = "CoffeeShop";
+
+package coffee;
+
+service CoffeeShop {
+    rpc OrderCoffee(OrderRequest) returns (CoffeeResponse);
+}
+
+message OrderRequest {
+    Coffee coffee = 1;
+}
+
+message CoffeeResponse {
+    Coffee coffee = 1;
+    string receipt = 2;
+}
+
+enum Coffee {
+    COFFEE_UNSPECIFIED = 0;
+    COFFEE_AMERICANO = 1;
+    COFFEE_LATTE = 2;
+    COFFEE_FLAT_WHITE = 3;
+    COFFEE_ESPRESSO = 4;
+}
