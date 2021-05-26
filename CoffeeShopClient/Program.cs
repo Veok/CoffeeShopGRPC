@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using Grpc.Net.Client;
 
 namespace CoffeeShopClient
@@ -12,24 +13,52 @@ namespace CoffeeShopClient
         {
             using var channel = GrpcChannel.ForAddress("https://localhost:5001");
             var client = new CoffeeShop.CoffeeShopClient(channel);
+            
+            var orders = await GetOrdersFromMenu(client);
+            await OrderCoffee(client, orders);
 
-            var menu = await client.GetMenuAsync(new Empty());
-            
-            Console.WriteLine("Menu:");
-            Console.WriteLine(string.Join('\n', menu.MenuRecords.Select((c,i) => $"{i + 1}.{c.Coffee}: {c.Price}$")));
-            Console.WriteLine("What you like to order. Type a number: ");
-            
-            var key = Console.ReadKey();
-            
-            var orderRequest = new OrderRequest
-            {
-                Coffee = (Coffee) int.Parse(key.KeyChar.ToString())
-            };
-          
-            var order = await client.OrderCoffeeAsync(orderRequest);
-            
-            Console.WriteLine($"\nYour order: {order.Coffee}. \nReceipt: {order.Receipt}");
+            Console.WriteLine("\nPress any key to exit");
             Console.ReadKey();
+            await channel.ShutdownAsync();
+        }
+
+        private static async Task OrderCoffee(CoffeeShop.CoffeeShopClient client, IEnumerable<OrderRequest> orders)
+        {
+            using var call = client.OrderCoffee();
+            
+            var orderResponseTask = Task.Run(async () =>
+            {
+                while (await call.ResponseStream.MoveNext())
+                {
+                    var order = call.ResponseStream.Current;
+                    Console.WriteLine($"\nYour order: {order.Coffee}. \nReceipt: {order.Receipt}");
+                }
+            });
+
+            foreach (var order in orders)
+            {
+                await call.RequestStream.WriteAsync(order);
+            }
+
+            await call.RequestStream.CompleteAsync();
+            await orderResponseTask;
+        }
+
+        private static async Task<List<OrderRequest>> GetOrdersFromMenu(CoffeeShop.CoffeeShopClient client)
+        {
+            var orders = new List<OrderRequest>();
+            Console.WriteLine("Menu:");
+
+            using var call = client.GetMenu(new Empty());
+
+            while (await call.ResponseStream.MoveNext())
+            {
+                var menuItem = call.ResponseStream.Current;
+                Console.WriteLine($"{menuItem.Position}.{menuItem.Coffee}: {menuItem.Price}$");
+                orders.Add(new OrderRequest {Coffee = menuItem.Coffee});
+            }
+
+            return orders;
         }
     }
 }

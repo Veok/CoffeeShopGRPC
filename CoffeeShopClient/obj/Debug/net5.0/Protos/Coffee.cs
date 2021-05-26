@@ -27,23 +27,21 @@ namespace CoffeeShopClient {
             "ChNQcm90b3MvY29mZmVlLnByb3RvEgZjb2ZmZWUaG2dvb2dsZS9wcm90b2J1",
             "Zi9lbXB0eS5wcm90byIuCgxPcmRlclJlcXVlc3QSHgoGY29mZmVlGAEgASgO",
             "Mg4uY29mZmVlLkNvZmZlZSJBCg5Db2ZmZWVSZXNwb25zZRIeCgZjb2ZmZWUY",
-            "ASABKA4yDi5jb2ZmZWUuQ29mZmVlEg8KB3JlY2VpcHQYAiABKAkiOAoMTWVu",
-            "dVJlc3BvbnNlEigKDG1lbnVfcmVjb3JkcxgBIAMoCzISLmNvZmZlZS5NZW51",
-            "UmVjb3JkIjsKCk1lbnVSZWNvcmQSHgoGY29mZmVlGAEgASgOMg4uY29mZmVl",
-            "LkNvZmZlZRINCgVwcmljZRgCIAEoBSp0CgZDb2ZmZWUSFgoSQ09GRkVFX1VO",
-            "U1BFQ0lGSUVEEAASFAoQQ09GRkVFX0FNRVJJQ0FOTxABEhAKDENPRkZFRV9M",
-            "QVRURRACEhUKEUNPRkZFRV9GTEFUX1dISVRFEAMSEwoPQ09GRkVFX0VTUFJF",
-            "U1NPEAQyggEKCkNvZmZlZVNob3ASOwoLT3JkZXJDb2ZmZWUSFC5jb2ZmZWUu",
-            "T3JkZXJSZXF1ZXN0GhYuY29mZmVlLkNvZmZlZVJlc3BvbnNlEjcKB0dldE1l",
-            "bnUSFi5nb29nbGUucHJvdG9idWYuRW1wdHkaFC5jb2ZmZWUuTWVudVJlc3Bv",
-            "bnNlQhOqAhBDb2ZmZWVTaG9wQ2xpZW50YgZwcm90bzM="));
+            "ASABKA4yDi5jb2ZmZWUuQ29mZmVlEg8KB3JlY2VpcHQYAiABKAkiTQoKTWVu",
+            "dVJlY29yZBIQCghwb3NpdGlvbhgBIAEoBRIeCgZjb2ZmZWUYAiABKA4yDi5j",
+            "b2ZmZWUuQ29mZmVlEg0KBXByaWNlGAMgASgFKnQKBkNvZmZlZRIWChJDT0ZG",
+            "RUVfVU5TUEVDSUZJRUQQABIUChBDT0ZGRUVfQU1FUklDQU5PEAESEAoMQ09G",
+            "RkVFX0xBVFRFEAISFQoRQ09GRkVFX0ZMQVRfV0hJVEUQAxITCg9DT0ZGRUVf",
+            "RVNQUkVTU08QBDKGAQoKQ29mZmVlU2hvcBI/CgtPcmRlckNvZmZlZRIULmNv",
+            "ZmZlZS5PcmRlclJlcXVlc3QaFi5jb2ZmZWUuQ29mZmVlUmVzcG9uc2UoATAB",
+            "EjcKB0dldE1lbnUSFi5nb29nbGUucHJvdG9idWYuRW1wdHkaEi5jb2ZmZWUu",
+            "TWVudVJlY29yZDABQhOqAhBDb2ZmZWVTaG9wQ2xpZW50YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::CoffeeShopClient.Coffee), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::CoffeeShopClient.OrderRequest), global::CoffeeShopClient.OrderRequest.Parser, new[]{ "Coffee" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::CoffeeShopClient.CoffeeResponse), global::CoffeeShopClient.CoffeeResponse.Parser, new[]{ "Coffee", "Receipt" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CoffeeShopClient.MenuResponse), global::CoffeeShopClient.MenuResponse.Parser, new[]{ "MenuRecords" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::CoffeeShopClient.MenuRecord), global::CoffeeShopClient.MenuRecord.Parser, new[]{ "Coffee", "Price" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::CoffeeShopClient.MenuRecord), global::CoffeeShopClient.MenuRecord.Parser, new[]{ "Position", "Coffee", "Price" }, null, null, null, null)
           }));
     }
     #endregion
@@ -441,167 +439,6 @@ namespace CoffeeShopClient {
 
   }
 
-  public sealed partial class MenuResponse : pb::IMessage<MenuResponse>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<MenuResponse> _parser = new pb::MessageParser<MenuResponse>(() => new MenuResponse());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<MenuResponse> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::CoffeeShopClient.CoffeeReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MenuResponse() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MenuResponse(MenuResponse other) : this() {
-      menuRecords_ = other.menuRecords_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public MenuResponse Clone() {
-      return new MenuResponse(this);
-    }
-
-    /// <summary>Field number for the "menu_records" field.</summary>
-    public const int MenuRecordsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::CoffeeShopClient.MenuRecord> _repeated_menuRecords_codec
-        = pb::FieldCodec.ForMessage(10, global::CoffeeShopClient.MenuRecord.Parser);
-    private readonly pbc::RepeatedField<global::CoffeeShopClient.MenuRecord> menuRecords_ = new pbc::RepeatedField<global::CoffeeShopClient.MenuRecord>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public pbc::RepeatedField<global::CoffeeShopClient.MenuRecord> MenuRecords {
-      get { return menuRecords_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override bool Equals(object other) {
-      return Equals(other as MenuResponse);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(MenuResponse other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if(!menuRecords_.Equals(other.menuRecords_)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= menuRecords_.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      menuRecords_.WriteTo(output, _repeated_menuRecords_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      menuRecords_.WriteTo(ref output, _repeated_menuRecords_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public int CalculateSize() {
-      int size = 0;
-      size += menuRecords_.CalculateSize(_repeated_menuRecords_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(MenuResponse other) {
-      if (other == null) {
-        return;
-      }
-      menuRecords_.Add(other.menuRecords_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            menuRecords_.AddEntriesFrom(input, _repeated_menuRecords_codec);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            menuRecords_.AddEntriesFrom(ref input, _repeated_menuRecords_codec);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
   public sealed partial class MenuRecord : pb::IMessage<MenuRecord>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -614,7 +451,7 @@ namespace CoffeeShopClient {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::CoffeeShopClient.CoffeeReflection.Descriptor.MessageTypes[3]; }
+      get { return global::CoffeeShopClient.CoffeeReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -631,6 +468,7 @@ namespace CoffeeShopClient {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public MenuRecord(MenuRecord other) : this() {
+      position_ = other.position_;
       coffee_ = other.coffee_;
       price_ = other.price_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -641,8 +479,19 @@ namespace CoffeeShopClient {
       return new MenuRecord(this);
     }
 
+    /// <summary>Field number for the "position" field.</summary>
+    public const int PositionFieldNumber = 1;
+    private int position_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int Position {
+      get { return position_; }
+      set {
+        position_ = value;
+      }
+    }
+
     /// <summary>Field number for the "coffee" field.</summary>
-    public const int CoffeeFieldNumber = 1;
+    public const int CoffeeFieldNumber = 2;
     private global::CoffeeShopClient.Coffee coffee_ = global::CoffeeShopClient.Coffee.Unspecified;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::CoffeeShopClient.Coffee Coffee {
@@ -653,7 +502,7 @@ namespace CoffeeShopClient {
     }
 
     /// <summary>Field number for the "price" field.</summary>
-    public const int PriceFieldNumber = 2;
+    public const int PriceFieldNumber = 3;
     private int price_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Price {
@@ -676,6 +525,7 @@ namespace CoffeeShopClient {
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Position != other.Position) return false;
       if (Coffee != other.Coffee) return false;
       if (Price != other.Price) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -684,6 +534,7 @@ namespace CoffeeShopClient {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Position != 0) hash ^= Position.GetHashCode();
       if (Coffee != global::CoffeeShopClient.Coffee.Unspecified) hash ^= Coffee.GetHashCode();
       if (Price != 0) hash ^= Price.GetHashCode();
       if (_unknownFields != null) {
@@ -702,12 +553,16 @@ namespace CoffeeShopClient {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Coffee != global::CoffeeShopClient.Coffee.Unspecified) {
+      if (Position != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(Position);
+      }
+      if (Coffee != global::CoffeeShopClient.Coffee.Unspecified) {
+        output.WriteRawTag(16);
         output.WriteEnum((int) Coffee);
       }
       if (Price != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(Price);
       }
       if (_unknownFields != null) {
@@ -719,12 +574,16 @@ namespace CoffeeShopClient {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Coffee != global::CoffeeShopClient.Coffee.Unspecified) {
+      if (Position != 0) {
         output.WriteRawTag(8);
+        output.WriteInt32(Position);
+      }
+      if (Coffee != global::CoffeeShopClient.Coffee.Unspecified) {
+        output.WriteRawTag(16);
         output.WriteEnum((int) Coffee);
       }
       if (Price != 0) {
-        output.WriteRawTag(16);
+        output.WriteRawTag(24);
         output.WriteInt32(Price);
       }
       if (_unknownFields != null) {
@@ -736,6 +595,9 @@ namespace CoffeeShopClient {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Position != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Position);
+      }
       if (Coffee != global::CoffeeShopClient.Coffee.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Coffee);
       }
@@ -752,6 +614,9 @@ namespace CoffeeShopClient {
     public void MergeFrom(MenuRecord other) {
       if (other == null) {
         return;
+      }
+      if (other.Position != 0) {
+        Position = other.Position;
       }
       if (other.Coffee != global::CoffeeShopClient.Coffee.Unspecified) {
         Coffee = other.Coffee;
@@ -774,10 +639,14 @@ namespace CoffeeShopClient {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
-            Coffee = (global::CoffeeShopClient.Coffee) input.ReadEnum();
+            Position = input.ReadInt32();
             break;
           }
           case 16: {
+            Coffee = (global::CoffeeShopClient.Coffee) input.ReadEnum();
+            break;
+          }
+          case 24: {
             Price = input.ReadInt32();
             break;
           }
@@ -796,10 +665,14 @@ namespace CoffeeShopClient {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
-            Coffee = (global::CoffeeShopClient.Coffee) input.ReadEnum();
+            Position = input.ReadInt32();
             break;
           }
           case 16: {
+            Coffee = (global::CoffeeShopClient.Coffee) input.ReadEnum();
+            break;
+          }
+          case 24: {
             Price = input.ReadInt32();
             break;
           }

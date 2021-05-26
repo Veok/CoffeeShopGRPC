@@ -45,21 +45,21 @@ namespace CoffeeShopClient {
     static readonly grpc::Marshaller<global::CoffeeShopClient.OrderRequest> __Marshaller_coffee_OrderRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CoffeeShopClient.OrderRequest.Parser));
     static readonly grpc::Marshaller<global::CoffeeShopClient.CoffeeResponse> __Marshaller_coffee_CoffeeResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CoffeeShopClient.CoffeeResponse.Parser));
     static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Google.Protobuf.WellKnownTypes.Empty.Parser));
-    static readonly grpc::Marshaller<global::CoffeeShopClient.MenuResponse> __Marshaller_coffee_MenuResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CoffeeShopClient.MenuResponse.Parser));
+    static readonly grpc::Marshaller<global::CoffeeShopClient.MenuRecord> __Marshaller_coffee_MenuRecord = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::CoffeeShopClient.MenuRecord.Parser));
 
     static readonly grpc::Method<global::CoffeeShopClient.OrderRequest, global::CoffeeShopClient.CoffeeResponse> __Method_OrderCoffee = new grpc::Method<global::CoffeeShopClient.OrderRequest, global::CoffeeShopClient.CoffeeResponse>(
-        grpc::MethodType.Unary,
+        grpc::MethodType.DuplexStreaming,
         __ServiceName,
         "OrderCoffee",
         __Marshaller_coffee_OrderRequest,
         __Marshaller_coffee_CoffeeResponse);
 
-    static readonly grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::CoffeeShopClient.MenuResponse> __Method_GetMenu = new grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::CoffeeShopClient.MenuResponse>(
-        grpc::MethodType.Unary,
+    static readonly grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::CoffeeShopClient.MenuRecord> __Method_GetMenu = new grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::CoffeeShopClient.MenuRecord>(
+        grpc::MethodType.ServerStreaming,
         __ServiceName,
         "GetMenu",
         __Marshaller_google_protobuf_Empty,
-        __Marshaller_coffee_MenuResponse);
+        __Marshaller_coffee_MenuRecord);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -90,37 +90,21 @@ namespace CoffeeShopClient {
       {
       }
 
-      public virtual global::CoffeeShopClient.CoffeeResponse OrderCoffee(global::CoffeeShopClient.OrderRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncDuplexStreamingCall<global::CoffeeShopClient.OrderRequest, global::CoffeeShopClient.CoffeeResponse> OrderCoffee(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return OrderCoffee(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return OrderCoffee(new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::CoffeeShopClient.CoffeeResponse OrderCoffee(global::CoffeeShopClient.OrderRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncDuplexStreamingCall<global::CoffeeShopClient.OrderRequest, global::CoffeeShopClient.CoffeeResponse> OrderCoffee(grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_OrderCoffee, null, options, request);
+        return CallInvoker.AsyncDuplexStreamingCall(__Method_OrderCoffee, null, options);
       }
-      public virtual grpc::AsyncUnaryCall<global::CoffeeShopClient.CoffeeResponse> OrderCoffeeAsync(global::CoffeeShopClient.OrderRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return OrderCoffeeAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      public virtual grpc::AsyncUnaryCall<global::CoffeeShopClient.CoffeeResponse> OrderCoffeeAsync(global::CoffeeShopClient.OrderRequest request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_OrderCoffee, null, options, request);
-      }
-      public virtual global::CoffeeShopClient.MenuResponse GetMenu(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncServerStreamingCall<global::CoffeeShopClient.MenuRecord> GetMenu(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return GetMenu(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::CoffeeShopClient.MenuResponse GetMenu(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
+      public virtual grpc::AsyncServerStreamingCall<global::CoffeeShopClient.MenuRecord> GetMenu(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_GetMenu, null, options, request);
-      }
-      public virtual grpc::AsyncUnaryCall<global::CoffeeShopClient.MenuResponse> GetMenuAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
-      {
-        return GetMenuAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
-      }
-      public virtual grpc::AsyncUnaryCall<global::CoffeeShopClient.MenuResponse> GetMenuAsync(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::CallOptions options)
-      {
-        return CallInvoker.AsyncUnaryCall(__Method_GetMenu, null, options, request);
+        return CallInvoker.AsyncServerStreamingCall(__Method_GetMenu, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       protected override CoffeeShopClient NewInstance(ClientBaseConfiguration configuration)

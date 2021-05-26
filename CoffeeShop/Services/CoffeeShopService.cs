@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Google.Protobuf.Collections;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
@@ -18,38 +16,42 @@ namespace CoffeeShop.Services
             _logger = logger;
         }
 
-        public override Task<CoffeeResponse> OrderCoffee(OrderRequest request, ServerCallContext context)
+        public override async Task OrderCoffee(IAsyncStreamReader<OrderRequest> requestStream, IServerStreamWriter<CoffeeResponse> responseStream, ServerCallContext context)
         {
-            _logger.LogInformation("Received order with coffee: {Coffee}", request.Coffee);
-            var isCoffeeInMenu = CoffeeMenu().TryGetValue(request.Coffee, out var price);
-
-            if (isCoffeeInMenu)
+            while (await requestStream.MoveNext())
             {
-                return Task.FromResult(new CoffeeResponse
-                {
-                    Coffee = request.Coffee,
-                    Receipt = $"{request.Coffee}: {price}$"
-                });
-            }
+                var current = requestStream.Current;
+                var isCoffeeInMenu = CoffeeMenu().TryGetValue(current.Coffee, out var price);
+                _logger.LogInformation("Received order with coffee: {Coffee}", current.Coffee);
 
-            const string message = "Invalid Coffee: {Coffee}";
-            _logger.LogError(message, request.Coffee);
-            throw new ArgumentOutOfRangeException(nameof(request.Coffee), request.Coffee, message);
+                if (isCoffeeInMenu)
+                {
+                    var coffeeOrder = new CoffeeResponse
+                    {
+                        Coffee = current.Coffee,
+                        Receipt = $"{current.Coffee}: {price}$"
+                    };
+
+                    await responseStream.WriteAsync(coffeeOrder);
+                }
+                else
+                {
+                    const string message = "Invalid Coffee: {Coffee}";
+                    _logger.LogError(message, current.Coffee);
+                    throw new ArgumentOutOfRangeException(nameof(current.Coffee), current.Coffee, message);
+                }
+            }
         }
 
-        public override Task<MenuResponse> GetMenu(Empty request, ServerCallContext context)
+        public override async Task GetMenu(Empty request, IServerStreamWriter<MenuRecord> responseStream, ServerCallContext context)
         {
-            var menuRecords = CoffeeMenu()
-                .Select(x => new MenuRecord
-                {
-                    Coffee = x.Key,
-                    Price = x.Value
-                }).ToList();
-
-            return Task.FromResult(new MenuResponse
+            var index = 1;
+            foreach (var (key, value) in CoffeeMenu())
             {
-                MenuRecords = {menuRecords}
-            });
+                var menuRecord = new MenuRecord {Coffee = key, Price = value, Position = index};
+                index++;
+                await responseStream.WriteAsync(menuRecord);
+            }
         }
 
         private static Dictionary<Coffee, int> CoffeeMenu()

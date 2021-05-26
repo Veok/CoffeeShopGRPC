@@ -6,8 +6,8 @@ import "google/protobuf/empty.proto";
 package coffee;
 
 service CoffeeShop {
-    rpc OrderCoffee(OrderRequest) returns (CoffeeResponse);
-    rpc GetMenu(google.protobuf.Empty) returns (MenuResponse);
+    rpc OrderCoffee(stream OrderRequest) returns (stream CoffeeResponse);
+    rpc GetMenu(google.protobuf.Empty) returns (stream MenuRecord);
 }
 
 message OrderRequest {
@@ -19,13 +19,10 @@ message CoffeeResponse {
     string receipt = 2;
 }
 
-message MenuResponse {
-    repeated MenuRecord menu_records = 1;
-}
-
 message MenuRecord {
-    Coffee coffee = 1;
-    int32 price = 2;
+    int32 position = 1;
+    Coffee coffee = 2;
+    int32 price = 3;
 }
 
 enum Coffee {
